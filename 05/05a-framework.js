@@ -13,7 +13,7 @@ function framework() {
                     data += chunk;
                 })
                 req.on("end", () => {
-                    req.data = data;
+                    req.data = JSON.parse(data);
                     for(const controller of controllers)
                         if (req.url.startsWith('/'+controller.name)) {
                             controller.func(req, res);
